@@ -1,0 +1,1095 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "sites",
+        "model": "site"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "account",
+        "model": "emailaddress"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "account",
+        "model": "emailconfirmation"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "socialaccount",
+        "model": "socialaccount"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "socialaccount",
+        "model": "socialapp"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "socialaccount",
+        "model": "socialtoken"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "accounts",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "materi",
+        "model": "submateri"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "materi",
+        "model": "materiutama"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "8zegfgik5q7dzxp4j83v1k6ykc9xbt6a",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQRO9CHSE-BkzK9D4DWtglOIlAMnYV5e6xJReJNNW8N_NmAba1hK3TEmZkV6bY5beLkJ5UD4APqPfGU6vrMkd-KPyknU8N6XU73b-DAr3sa6GHlJ2HTJS8AgXa2BSF3SO9lij8aBGQYjIkNI1ZGoXGeRkF6MEZ9vkC9F039g:1v6Ffh:VOK1EaHt5wcgQoNj2-ju6BRouAkob5Mpvf-eHLWQF6w",
+        "expire_date": "2025-10-21T21:56:37.809Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "cqoyr6hv4dnjoy0eajqjxep6m25o4k7u",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQRO9CHSE-BkzK9D4DWtglOIlAMnYV5e6xJReJNNW8N_NmAba1hK3TEmZkV6bY5beLkJ5UD4APqPfGU6vrMkd-KPyknU8N6XU73b-DAr3sa6GHlJ2HTJS8AgXa2BSF3SO9lij8aBGQYjIkNI1ZGoXGeRkF6MEZ9vkC9F039g:1vNmEK:QHbGw1AGl9_7f_2PAJtAJ2ynq7DhWLP150DiOmtHG1I",
+        "expire_date": "2025-12-09T06:08:48.640Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "psxm35kp0vak4twwqgifs690r61810iy",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQRO9CHSE-BkzK9D4DWtglOIlAMnYV5e6xJReJNNW8N_NmAba1hK3TEmZkV6bY5beLkJ5UD4APqPfGU6vrMkd-KPyknU8N6XU73b-DAr3sa6GHlJ2HTJS8AgXa2BSF3SO9lij8aBGQYjIkNI1ZGoXGeRkF6MEZ9vkC9F039g:1vNm0s:mBo4lT1IZLokMqgMucMC29vIVU7wRL2pyuEd1z0HCtw",
+        "expire_date": "2025-12-09T05:54:54.421Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "rfenhaicwuevh9g0wgpwzicsbbihccdp",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQRO9CHSE-BkzK9D4DWtglOIlAMnYV5e6xJReJNNW8N_NmAba1hK3TEmZkV6bY5beLkJ5UD4APqPfGU6vrMkd-KPyknU8N6XU73b-DAr3sa6GHlJ2HTJS8AgXa2BSF3SO9lij8aBGQYjIkNI1ZGoXGeRkF6MEZ9vkC9F039g:1v4Y89:RdjmEmz-maOUwOBWyfuA899m3Vi-AVyefGGfXKEtdAM",
+        "expire_date": "2025-10-17T05:14:57.121Z"
+    }
+},
+{
+    "model": "sites.site",
+    "fields": {
+        "domain": "example.com",
+        "name": "example.com"
+    }
+},
+{
+    "model": "materi.materiutama",
+    "pk": 1,
+    "fields": {
+        "judul": "Biologi Kelas X",
+        "deskripsi": "wsfdgw4etgsdfg4wgdfgerjfgkmhhhhhhhhhhhhhhhhhh",
+        "slug": "biologi-kelas-x",
+        "cover_image": "materi/covers/ss_sempro_ejYL2uw.png"
+    }
+},
+{
+    "model": "materi.submateri",
+    "pk": 1,
+    "fields": {
+        "parent": 1,
+        "judul": "Reproduksi hewan",
+        "slug": "reproduksi-hewan",
+        "isi": "<ul><li><p style=\"text-align: left;\">Reproduksi hewan adalah proses biologis yang penting untuk kelangsungan hidup spesies. Secara umum, reproduksi dapat dibagi menjadi dua jenis utama: aseksual dan seksual. Reproduksi aseksual tidak melibatkan penyatuan sel kelamin (gamet) dari dua individu, sehingga keturunan yang dihasilkan identik secara genetik dengan induknya. Contoh reproduksi aseksual pada hewan meliputi pembelahan biner pada amoeba, fragmentasi pada bintang laut, dan tunas pada hydra. Proses ini memungkinkan spesies untuk berkembang biak dengan cepat dalam kondisi lingkungan yang stabil.</p></li></ul><hr><ul><li><p style=\"text-align: left;\">Sebaliknya, reproduksi seksual melibatkan penyatuan sel telur (ovum) dari betina dan sel sperma (spermatozoa) dari jantan untuk membentuk zigot. Proses ini disebut fertilisasi. Fertilisasi dapat terjadi di luar tubuh induk (eksternal), seperti pada ikan dan amfibi, atau di dalam tubuh induk (internal), seperti pada reptil, burung, dan mamalia. Keuntungan utama dari reproduksi seksual adalah terjadinya variasi genetik pada keturunan. Variasi ini sangat penting untuk adaptasi spesies terhadap perubahan lingkungan, karena meningkatkan kemungkinan adanya individu yang memiliki sifat-sifat unggul untuk bertahan hidup.</p></li></ul><hr><ul><li><p style=\"text-align: left;\">Reproduksi hewan menunjukkan beragam strategi yang disesuaikan dengan lingkungan dan cara hidup masing-masing spesies. Misalnya, mamalia seperti manusia, kucing, dan gajah memiliki masa kehamilan yang berbeda, di mana embrio berkembang di dalam rahim induk sebelum dilahirkan. Di sisi lain, hewan seperti ayam dan burung puyuh bertelur, dan embrio berkembang di luar tubuh induk dalam cangkang yang keras. Selain itu, ada juga hewan yang memiliki siklus hidup kompleks, seperti serangga yang mengalami metamorfosis dari larva menjadi dewasa. Semua strategi reproduksi ini bertujuan untuk memastikan kelangsungan hidup populasi dan penyebaran gen dari satu generasi ke generasi berikutn</p></li></ul><p style=\"text-align: left;\"></p>",
+        "file": "",
+        "gambar": "materi/images/Diagram_Tanpa_Judul.drawio_6.png",
+        "urutan": 1,
+        "updated_at": "2025-12-05T12:33:48.509Z"
+    }
+},
+{
+    "model": "materi.submateri",
+    "pk": 2,
+    "fields": {
+        "parent": 1,
+        "judul": "Flora dan fauna",
+        "slug": "flora-dan-fauna",
+        "isi": "<p style=\"text-align: left;\">Materi mengenai <strong>flora dan fauna</strong> membahas tentang seluruh jenis tumbuhan dan hewan yang ada di muka bumi. Secara sederhana, <strong>flora</strong> merujuk pada dunia tumbuhan, sedangkan <strong>fauna</strong> merujuk pada dunia hewan. Keduanya merupakan bagian penting dari keanekaragaman hayati (biodiversitas) yang membentuk ekosistem. Keberadaan dan persebaran flora dan fauna di suatu wilayah tidak merata dan dipengaruhi oleh berbagai faktor, seperti iklim, kondisi tanah, dan bentuk permukaan bumi.</p><hr><p style=\"text-align: left;\"></p><h3 style=\"text-align: left;\">Flora dan Fauna di Indonesia</h3><p style=\"text-align: left;\"></p><p style=\"text-align: left;\">Indonesia dikenal sebagai salah satu negara dengan keanekaragaman flora dan fauna terkaya di dunia karena letaknya di daerah tropis. Persebaran flora dan fauna di Indonesia dibagi menjadi tiga wilayah utama yang dipisahkan oleh garis imajiner, yaitu:</p><ul><li><p style=\"text-align: left;\"><strong>Wilayah Asiatis (Barat):</strong> Mencakup Sumatra, Jawa, Bali, dan Kalimantan. Flora di wilayah ini didominasi oleh hutan tropis dengan pohon-pohon berdaun lebat seperti meranti, kamper, dan mahoni. Fauna Asiatis dicirikan oleh mamalia berukuran besar seperti gajah, harimau sumatra, dan badak bercula satu.</p></li><li><p style=\"text-align: left;\"><strong>Wilayah Australis (Timur):</strong> Meliputi Papua, Maluku, dan sekitarnya. Flora di sini didominasi oleh jenis palem-paleman seperti sagu dan nipah. Fauna Australis memiliki ciri khas hewan berkantung seperti kanguru dan kuskus, serta burung-burung dengan warna mencolok seperti cendrawasih dan kakatua.</p></li><li><p style=\"text-align: left;\"><strong>Wilayah Peralihan (Tengah):</strong> Mencakup Sulawesi, Nusa Tenggara, dan Kepulauan Maluku. Wilayah ini memiliki perpaduan antara flora dan fauna Asiatis dan Australis. Beberapa contoh flora khas di sini adalah cengkeh, pala, dan kayu cendana, sedangkan faunanya termasuk anoa, babi rusa, dan komodo. Garis Wallace memisahkan wilayah Asiatis dan Peralihan, sedangkan Garis Weber memisahkan wilayah Peralihan dan Australis.</p></li></ul><hr><p style=\"text-align: left;\"></p><h3 style=\"text-align: left;\">Faktor yang Mempengaruhi Persebaran</h3><p style=\"text-align: left;\"></p><p style=\"text-align: left;\">Persebaran flora dan fauna di seluruh dunia dipengaruhi oleh beberapa faktor utama:</p><ol><li><p style=\"text-align: left;\"><strong>Faktor Klimatik (Iklim):</strong> Iklim, termasuk suhu, curah hujan, kelembapan udara, dan sinar matahari, merupakan faktor paling dominan. Setiap spesies memiliki batas toleransi iklim tertentu untuk dapat bertahan hidup dan berkembang.</p></li><li><p style=\"text-align: left;\"><strong>Faktor Edafik (Tanah):</strong> Kondisi tanah, seperti tingkat kesuburan, tekstur, kandungan mineral, dan kandungan air, sangat memengaruhi pertumbuhan tumbuhan yang menjadi sumber makanan bagi hewan.</p></li><li><p style=\"text-align: left;\"><strong>Faktor Fisiografis (Bentuk Lahan):</strong> Ketinggian dan bentuk permukaan bumi (relif) juga berperan. Ketinggian suatu tempat dapat memengaruhi suhu dan kelembapan, sehingga jenis flora dan fauna yang hidup di dataran rendah akan berbeda dengan yang di pegunungan.</p></li><li><p style=\"text-align: left;\"><strong>Faktor Biotik (Makhluk Hidup):</strong> Makhluk hidup lain, termasuk manusia, hewan, dan tumbuhan, juga memengaruhi persebaran. Manusia dapat memindahkan spesies ke wilayah baru (introduksi) atau merusak habitat aslinya. Interaksi antarspesies, seperti rantai makanan dan simbiosis, juga menentukan kelangsungan hidup suatu populasi.</p></li></ol>",
+        "file": "",
+        "gambar": "",
+        "urutan": 1,
+        "updated_at": "2025-10-07T21:58:39.336Z"
+    }
+},
+{
+    "model": "materi.submateri",
+    "pk": 15,
+    "fields": {
+        "parent": 1,
+        "judul": "etge45t",
+        "slug": "etge45t",
+        "isi": "<p style=\"text-align: left;\">h5rh45hh</p>",
+        "file": "",
+        "gambar": "",
+        "urutan": 1,
+        "updated_at": "2025-12-08T12:02:42.488Z"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "add_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "change_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "delete_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "view_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add email address",
+        "content_type": [
+            "account",
+            "emailaddress"
+        ],
+        "codename": "add_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change email address",
+        "content_type": [
+            "account",
+            "emailaddress"
+        ],
+        "codename": "change_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete email address",
+        "content_type": [
+            "account",
+            "emailaddress"
+        ],
+        "codename": "delete_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view email address",
+        "content_type": [
+            "account",
+            "emailaddress"
+        ],
+        "codename": "view_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add email confirmation",
+        "content_type": [
+            "account",
+            "emailconfirmation"
+        ],
+        "codename": "add_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change email confirmation",
+        "content_type": [
+            "account",
+            "emailconfirmation"
+        ],
+        "codename": "change_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete email confirmation",
+        "content_type": [
+            "account",
+            "emailconfirmation"
+        ],
+        "codename": "delete_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view email confirmation",
+        "content_type": [
+            "account",
+            "emailconfirmation"
+        ],
+        "codename": "view_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add social account",
+        "content_type": [
+            "socialaccount",
+            "socialaccount"
+        ],
+        "codename": "add_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change social account",
+        "content_type": [
+            "socialaccount",
+            "socialaccount"
+        ],
+        "codename": "change_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete social account",
+        "content_type": [
+            "socialaccount",
+            "socialaccount"
+        ],
+        "codename": "delete_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view social account",
+        "content_type": [
+            "socialaccount",
+            "socialaccount"
+        ],
+        "codename": "view_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add social application",
+        "content_type": [
+            "socialaccount",
+            "socialapp"
+        ],
+        "codename": "add_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change social application",
+        "content_type": [
+            "socialaccount",
+            "socialapp"
+        ],
+        "codename": "change_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete social application",
+        "content_type": [
+            "socialaccount",
+            "socialapp"
+        ],
+        "codename": "delete_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view social application",
+        "content_type": [
+            "socialaccount",
+            "socialapp"
+        ],
+        "codename": "view_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add social application token",
+        "content_type": [
+            "socialaccount",
+            "socialtoken"
+        ],
+        "codename": "add_socialtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change social application token",
+        "content_type": [
+            "socialaccount",
+            "socialtoken"
+        ],
+        "codename": "change_socialtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete social application token",
+        "content_type": [
+            "socialaccount",
+            "socialtoken"
+        ],
+        "codename": "delete_socialtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view social application token",
+        "content_type": [
+            "socialaccount",
+            "socialtoken"
+        ],
+        "codename": "view_socialtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add user",
+        "content_type": [
+            "accounts",
+            "user"
+        ],
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change user",
+        "content_type": [
+            "accounts",
+            "user"
+        ],
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete user",
+        "content_type": [
+            "accounts",
+            "user"
+        ],
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view user",
+        "content_type": [
+            "accounts",
+            "user"
+        ],
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add sub materi",
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "codename": "add_submateri"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change sub materi",
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "codename": "change_submateri"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete sub materi",
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "codename": "delete_submateri"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view sub materi",
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "codename": "view_submateri"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add materi utama",
+        "content_type": [
+            "materi",
+            "materiutama"
+        ],
+        "codename": "add_materiutama"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change materi utama",
+        "content_type": [
+            "materi",
+            "materiutama"
+        ],
+        "codename": "change_materiutama"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete materi utama",
+        "content_type": [
+            "materi",
+            "materiutama"
+        ],
+        "codename": "delete_materiutama"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view materi utama",
+        "content_type": [
+            "materi",
+            "materiutama"
+        ],
+        "codename": "view_materiutama"
+    }
+},
+{
+    "model": "accounts.user",
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "ardhanaulia222@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "ardhanaulia222@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-10-03T00:49:38Z",
+        "role": "siswa",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$sQpVlaTh2Ftp3OxILmp7Ex$h1kd+ju8wDpr0sOlHeb5bKuqL9KW9IxlrgsWnAhasIY=",
+        "last_login": "2025-11-25T06:08:48.634Z",
+        "is_superuser": true,
+        "username": "ardhan",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-10-03T05:14:40.546Z",
+        "role": "admin",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "kokonut2217@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "kokonut2217@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-10-03T05:16:14.186Z",
+        "role": "admin",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2025-10-03T05:19:27.069Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "accounts",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "ardhanaulia222@gmail.com",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2025-10-03T05:27:44.421Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "accounts",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "ardhanaulia222@gmail.com",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2025-10-05T23:54:47.457Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "materi",
+            "materiutama"
+        ],
+        "object_id": "1",
+        "object_repr": "Biologi Kelas X",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2025-10-05T23:55:13.886Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "object_id": "1",
+        "object_repr": "Biologi Kelas X - Reproduksi hewan",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2025-10-05T23:55:20.252Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "materi",
+            "materiutama"
+        ],
+        "object_id": "1",
+        "object_repr": "Biologi Kelas X",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2025-10-06T05:13:59.924Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "object_id": "2",
+        "object_repr": "Biologi Kelas X - Flora dan duna",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2025-10-06T11:54:47.537Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "object_id": "2",
+        "object_repr": "Biologi Kelas X - Flora dan duna",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Isi\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2025-10-06T22:49:44.857Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "object_id": "1",
+        "object_repr": "Biologi Kelas X - Reproduksi hewan",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Gambar\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2025-10-06T23:09:08.745Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "object_id": "1",
+        "object_repr": "Biologi Kelas X - Reproduksi hewan",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Isi\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2025-10-07T00:59:25.434Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "object_id": "1",
+        "object_repr": "Biologi Kelas X - Reproduksi hewan",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2025-10-07T01:02:45.497Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "object_id": "1",
+        "object_repr": "Biologi Kelas X - Reproduksi hewan",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Isi\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2025-10-07T21:57:11.651Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "object_id": "2",
+        "object_repr": "Biologi Kelas X - Flora dan fauna",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Judul\", \"Slug\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2025-10-07T21:58:23.052Z",
+        "user": [
+            "ardhan"
+        ],
+        "content_type": [
+            "materi",
+            "submateri"
+        ],
+        "object_id": "2",
+        "object_repr": "Biologi Kelas X - Flora dan fauna",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+}
+]
