@@ -9,9 +9,8 @@ from rest_framework import status
 from openai import OpenAI
 from .helper import extract_text_and_images
 from .models import MateriUtama, SubMateri, MateriFile
+from .file_utils import extract_file_content
 from dotenv import load_dotenv
-from pypdf import PdfReader
-import docx
 
 load_dotenv()
 
@@ -48,30 +47,13 @@ def build_materi_context(materi: MateriUtama, request, sub_slug=None):
                  text_lines.append(f"Deskripsi File: {f.deskripsi}")
              
              filename = f.file.name.lower()
-             if f.file and filename.endswith(".pdf"):
-                 try:
-                     with f.file.open('rb') as pdf_file:
-                         reader = PdfReader(pdf_file)
-                         pdf_text = ""
-                         for page in reader.pages:
-                             pdf_text += page.extract_text() + "\n"
-                         text_lines.append(f"Isi PDF:\n{pdf_text}")
-                 except Exception as e:
-                     print(f"Error reading PDF {f.file.name}: {e}")
-             elif f.file and filename.endswith(".docx"):
-                 try:
-                     with f.file.open('rb') as docx_file:
-                         doc = docx.Document(docx_file)
-                         docx_text = "\n".join([para.text for para in doc.paragraphs])
-                         text_lines.append(f"Isi DOCX:\n{docx_text}")
-                 except Exception as e:
-                     print(f"Error reading DOCX {f.file.name}: {e}")
-             elif f.file and filename.endswith(".txt"):
-                 try:
-                     with f.file.open('r') as txt_file:
-                         text_lines.append(f"Isi TXT:\n{txt_file.read()}")
-                 except Exception as e:
-                     print(f"Error reading TXT {f.file.name}: {e}")
+             
+             try:
+                 content, imgs = extract_file_content(f.file)
+                 text_lines.append(f"Isi File ({filename}):\n{content}")
+                 image_urls.extend(imgs)
+             except Exception as e:
+                 print(f"Error reading file {filename}: {e}")
 
     text = "\n".join(text_lines)
 
