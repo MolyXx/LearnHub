@@ -1,8 +1,8 @@
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.response import Response
 from rest_framework import status
-from .models import MateriUtama, SubMateri
-from .serializers import MateriUtamaSerializer, SubMateriSerializer
+from .models import MateriUtama, SubMateri, MateriFile
+from .serializers import MateriUtamaSerializer, SubMateriSerializer, MateriFileSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 from django.utils.text import slugify
 from django.core.files.storage import default_storage
@@ -124,7 +124,7 @@ def materi_update_delete(request, materi_slug):
             if "judul" in request.data:
                 new_slug = slugify(request.data["judul"])
                 serializer.validated_data["slug"] = new_slug
-
+            
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=400)
@@ -133,3 +133,34 @@ def materi_update_delete(request, materi_slug):
     if request.method == "DELETE":
         materi.delete()
         return Response({"message": "Materi berhasil dihapus"}, status=204)
+
+@api_view(["POST"])
+@parser_classes([MultiPartParser, FormParser])
+def materi_file_create(request):
+    serializer = MateriFileSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["GET", "PUT", "DELETE"])
+def materi_file_detail(request, pk):
+    try:
+        materi_file = MateriFile.objects.get(pk=pk)
+    except MateriFile.DoesNotExist:
+        return Response({"error": "File tidak ditemukan"}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == "GET":
+        serializer = MateriFileSerializer(materi_file)
+        return Response(serializer.data)
+
+    elif request.method == "PUT":
+        serializer = MateriFileSerializer(materi_file, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == "DELETE":
+        materi_file.delete()
+        return Response({"message": "File berhasil dihapus"}, status=status.HTTP_204_NO_CONTENT)

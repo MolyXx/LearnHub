@@ -8,8 +8,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from openai import OpenAI
 from .helper import extract_text_and_images
-from .models import MateriUtama, SubMateri
+from .models import MateriUtama, SubMateri, MateriFile
 from dotenv import load_dotenv
+from pypdf import PdfReader
+import docx
 
 load_dotenv()
 
@@ -35,10 +37,41 @@ def build_materi_context(materi: MateriUtama, request, sub_slug=None):
 
         if s.isi:
             clean_text, imgs = extract_text_and_images(s.isi)
-
             text_lines.append(clean_text) 
-            
             image_urls.extend(imgs)
+
+        # Proses MateriFile
+        files = s.files.all()
+        for f in files:
+             text_lines.append(f"\n[File: {f.judul}]")
+             if f.deskripsi:
+                 text_lines.append(f"Deskripsi File: {f.deskripsi}")
+             
+             filename = f.file.name.lower()
+             if f.file and filename.endswith(".pdf"):
+                 try:
+                     with f.file.open('rb') as pdf_file:
+                         reader = PdfReader(pdf_file)
+                         pdf_text = ""
+                         for page in reader.pages:
+                             pdf_text += page.extract_text() + "\n"
+                         text_lines.append(f"Isi PDF:\n{pdf_text}")
+                 except Exception as e:
+                     print(f"Error reading PDF {f.file.name}: {e}")
+             elif f.file and filename.endswith(".docx"):
+                 try:
+                     with f.file.open('rb') as docx_file:
+                         doc = docx.Document(docx_file)
+                         docx_text = "\n".join([para.text for para in doc.paragraphs])
+                         text_lines.append(f"Isi DOCX:\n{docx_text}")
+                 except Exception as e:
+                     print(f"Error reading DOCX {f.file.name}: {e}")
+             elif f.file and filename.endswith(".txt"):
+                 try:
+                     with f.file.open('r') as txt_file:
+                         text_lines.append(f"Isi TXT:\n{txt_file.read()}")
+                 except Exception as e:
+                     print(f"Error reading TXT {f.file.name}: {e}")
 
     text = "\n".join(text_lines)
 
@@ -69,16 +102,12 @@ def chat_gpt(request):
             pass
 
     system_prompt = (
-        "Anda adalah asisten pembelajaran. Jawablah berdasarkan topik dari materi yang diberikan."
-        "Gunakan bahasa yang mudah dimengerti oleh pelajar."
-        "Jika pertanyaan di luar konteks topik, katakan bahwa Anda hanya dapat menjawab berdasarkan topik materi yang diberikan."
-        "Pastikan jawaban yang anda berikan benar dan akurat."
-        "Jangan mengarang jawaban atau memberikan informasi yang tidak benar."
+        "Anda adalah asisten."
     )
 
     input_content = [
         {
-            "type": "input_text",
+            "type": "text",
             "text": system_prompt + "\n\n" + text_context
         }
     ]
@@ -88,18 +117,20 @@ def chat_gpt(request):
         content = msg.get("content", "")
 
         input_content.append({
-            "type": "input_text",
+            "type": "text",
             "text": f"{role.upper()}: {content}"
     })
 
     for url in image_urls[:2]:
         input_content.append({
-            "type": "input_image",
-            "image_url": url
+            "type": "image_url",
+            "image_url": {
+                "url": url
+            }
         })
 
     input_content.append({
-        "type": "input_text",
+        "type": "text",
         "text": message
     })
 
@@ -107,19 +138,20 @@ def chat_gpt(request):
         print("==== DEBUG GPT INPUT ====")
         print(json.dumps(input_content, indent=2, ensure_ascii=False))
         print("==== END DEBUG ====")
-        resp = client.responses.create(
+        resp = client.chat.completions.create(
             model="gpt-4o-mini",
-            input=[
+            messages=[
                 {
                     "role": "user",
                     "content": input_content
                 }
             ],
-            max_output_tokens=800,
+            max_tokens=800,
             temperature=0.2
         )
 
-        return Response({"reply": resp.output_text})
+        return Response({"reply": resp.choices[0].message.content})
 
     except Exception as e:
-        return Response({"error": str(e)}, status=500)
+         print(f"Error OpenAI: {e}")
+         return Response({"error": str(e)}, status=500)
