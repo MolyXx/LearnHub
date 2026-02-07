@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
-import { ArrowLeft, Download, FileText, FileImage, FileSpreadsheet, FileType } from "lucide-react"
+import { ArrowLeft, Download, FileText, FileImage, FileSpreadsheet, FileType, Volume2, StopCircle, RefreshCw } from "lucide-react"
 import ChatWidget from "@/components/ChatWidget"
 import FileIcon from "@/components/FileIcon"
 
@@ -11,6 +11,92 @@ export default function FileViewerPage() {
     const baseApiUrl = process.env.NEXT_PUBLIC_DJANGO_API_URL
     const [file, setFile] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [speaking, setSpeaking] = useState(false)
+    const [fileContent, setFileContent] = useState(null)
+    const [loadingContent, setLoadingContent] = useState(false)
+
+    const handleReadContent = async () => {
+        if (!('speechSynthesis' in window)) {
+            alert("Browser tidak mendukung Text-to-Speech");
+            return;
+        }
+
+        if (speaking) {
+            window.speechSynthesis.cancel();
+            setSpeaking(false);
+            return;
+        }
+
+        // Jika konten sudah ada, langsung baca
+        if (fileContent) {
+            speakText(fileContent);
+            return;
+        }
+
+        setLoadingContent(true);
+        try {
+            const res = await fetch(`${baseApiUrl}/materi-file/${fileId}/content/`);
+            if (!res.ok) throw new Error("Gagal mengambil isi file");
+            
+            const data = await res.json();
+            if (data.content) {
+                setFileContent(data.content);
+                speakText(data.content);
+            } else {
+                alert("Konten file kosong atau tidak dapat dibaca.");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Gagal memproses file untuk dibaca.");
+        } finally {
+            setLoadingContent(false);
+        }
+    };
+
+    const speakText = (text) => {
+        window.speechSynthesis.cancel();
+        
+        // Split text into chunks to avoid browser limitations
+        const chunks = text.match(/.{1,200}/g) || [];
+        let currentChunk = 0;
+
+        const speakChunk = () => {
+            if (currentChunk >= chunks.length) {
+                setSpeaking(false);
+                return;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(chunks[currentChunk]);
+            utterance.lang = "id-ID";
+            utterance.rate = 1.0;
+            
+            utterance.onend = () => {
+                currentChunk++;
+                speakChunk();
+            };
+
+            utterance.onerror = (e) => {
+                if (e.error === 'canceled' || e.error === 'interrupted') {
+                    // Ignore expected cancelation errors
+                    return;
+                }
+                console.error("TTS Error:", e);
+                setSpeaking(false);
+            };
+
+            window.speechSynthesis.speak(utterance);
+        };
+
+        setSpeaking(true);
+        speakChunk();
+    };
+
+    // Stop speaking when leaving page
+    useEffect(() => {
+        return () => {
+            window.speechSynthesis.cancel();
+        };
+    }, []);
 
     useEffect(() => {
         const fetchFile = async () => {
@@ -101,15 +187,41 @@ export default function FileViewerPage() {
                         </div>
                     </div>
                 </div>
-                <a 
-                    href={url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors font-medium text-sm"
-                >
-                    <Download size={18} />
-                    <span className="hidden sm:inline">Download</span>
-                </a>
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={handleReadContent}
+                        disabled={loadingContent}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors font-medium text-sm ${
+                            speaking 
+                            ? "bg-red-50 text-red-600 hover:bg-red-100" 
+                            : "bg-indigo-50 text-indigo-600 hover:bg-indigo-100"
+                        }`}
+                    >
+                        {loadingContent ? (
+                            <RefreshCw size={18} className="animate-spin" />
+                        ) : speaking ? (
+                            <>
+                                <StopCircle size={18} />
+                                <span className="hidden sm:inline">Stop Baca</span>
+                            </>
+                        ) : (
+                            <>
+                                <Volume2 size={18} />
+                                <span className="hidden sm:inline">Baca Isi File</span>
+                            </>
+                        )}
+                    </button>
+
+                    <a 
+                        href={url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors font-medium text-sm"
+                    >
+                        <Download size={18} />
+                        <span className="hidden sm:inline">Download</span>
+                    </a>
+                </div>
             </div>
 
             {/* Viewer */}

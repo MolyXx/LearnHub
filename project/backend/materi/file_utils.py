@@ -51,8 +51,9 @@ def extract_file_content(file_field):
                 for i, page in enumerate(reader.pages):
                     page_text = page.extract_text()
                     if page_text:
-                        pdf_text.append(f"Page {i+1}:\n{page_text}")
-                text_content = "\n".join(pdf_text)
+                        # Just append the text, skip "Page X" prefix for cleaner TTS
+                        pdf_text.append(page_text)
+                text_content = "\n\n".join(pdf_text)
 
         elif file_ext == ".docx":
             with file_field.open('rb') as f:
@@ -67,7 +68,7 @@ def extract_file_content(file_field):
                     slide_text = []
                     # Extract title
                     if slide.shapes.title:
-                        slide_text.append(f"Title: {slide.shapes.title.text}")
+                        slide_text.append(slide.shapes.title.text)
                     # Extract text from shapes
                     for shape in slide.shapes:
                         if hasattr(shape, "text") and shape.text:
@@ -75,8 +76,8 @@ def extract_file_content(file_field):
                             if shape == slide.shapes.title:
                                 continue
                             slide_text.append(shape.text)
-                    slides_text.append(f"Slide {i+1}:\n" + "\n".join(slide_text))
-                text_content = "\n".join(slides_text)
+                    slides_text.append("\n".join(slide_text))
+                text_content = "\n\n".join(slides_text)
 
         elif file_ext == ".xlsx":
             with file_field.open('rb') as f:

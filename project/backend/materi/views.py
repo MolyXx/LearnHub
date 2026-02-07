@@ -6,7 +6,9 @@ from .serializers import MateriUtamaSerializer, SubMateriSerializer, MateriFileS
 from rest_framework.parsers import MultiPartParser, FormParser
 from django.utils.text import slugify
 from django.core.files.storage import default_storage
+from django.core.files.storage import default_storage
 import time
+from .file_utils import extract_file_content
 
 
 @api_view(["GET", "POST"])
@@ -164,3 +166,16 @@ def materi_file_detail(request, pk):
     elif request.method == "DELETE":
         materi_file.delete()
         return Response({"message": "File berhasil dihapus"}, status=status.HTTP_204_NO_CONTENT)
+
+@api_view(["GET"])
+def materi_file_content(request, pk):
+    try:
+        materi_file = MateriFile.objects.get(pk=pk)
+    except MateriFile.DoesNotExist:
+        return Response({"error": "File tidak ditemukan"}, status=status.HTTP_404_NOT_FOUND)
+
+    try:
+        content, _ = extract_file_content(materi_file.file)
+        return Response({"content": content})
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

@@ -2,7 +2,7 @@
 import { useSession, signOut } from "next-auth/react"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { Edit2, Trash2, Plus, LogOut, BookOpen, Sparkles, Users } from 'lucide-react';
+import { Edit2, Trash2, Plus, LogOut, BookOpen, Sparkles, Users, Volume2, StopCircle } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogTrigger,

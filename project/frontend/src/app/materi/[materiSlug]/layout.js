@@ -19,7 +19,7 @@ export default function MateriLayout({ children }) {
   const [openSidebar, setOpenSidebar] = useState(false);
   const baseApiUrl = process.env.NEXT_PUBLIC_DJANGO_API_URL
 
-  const isAdmin = session?.user?.role === "admin"
+  const isAdmin = session?.user?.role === "admin" || session?.user?.role === "guru"
 
   const fetchMateri = async () => {
     try {
