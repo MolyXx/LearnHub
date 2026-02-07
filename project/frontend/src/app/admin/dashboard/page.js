@@ -64,7 +64,7 @@ export default function AdminDashboard() {
       <div className="max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
             <Users className="w-8 h-8 text-blue-600" />
-            Admin Dashboard - Guru Management
+            Admin Dashboard - Manajemen Guru
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -72,7 +72,7 @@ export default function AdminDashboard() {
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-fit">
                 <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
                     <UserPlus className="w-5 h-5 text-green-600" />
-                    Add New Guru
+                    Tambah Guru
                 </h2>
                 <form onSubmit={handleCreateGuru} className="space-y-4">
                     <div>
@@ -109,14 +109,14 @@ export default function AdminDashboard() {
                         type="submit"
                         className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
                     >
-                        Create Account
+                        Buat Akun
                     </button>
                 </form>
             </div>
 
             {/* List Gurus */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 md:col-span-2">
-                <h2 className="text-xl font-semibold mb-4">Existing Gurus</h2>
+                <h2 className="text-xl font-semibold mb-4">Daftar Guru</h2>
                 <div className="overflow-x-auto">
                     <table className="w-full text-left">
                         <thead>
@@ -137,7 +137,7 @@ export default function AdminDashboard() {
                             {gurus.length === 0 && (
                                 <tr>
                                     <td colSpan="3" className="py-8 text-center text-gray-500">
-                                        No Guru accounts found.
+                                        Belum ada guru.
                                     </td>
                                 </tr>
                             )}

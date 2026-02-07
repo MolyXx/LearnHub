@@ -465,7 +465,7 @@ export default function SubMateriPage() {
                                         )}
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium text-gray-700">Deskripsi (Rich Text)</label>
+                                        <label className="text-sm font-medium text-gray-700">Deskripsi</label>
                                         <div className="border rounded-xl overflow-hidden shadow-sm">
                                             {descEditor && (
                                                 <div className="bg-gray-50 border-b p-2 flex gap-1 flex-wrap">

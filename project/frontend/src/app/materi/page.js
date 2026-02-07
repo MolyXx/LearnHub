@@ -2,7 +2,7 @@
 import { useSession, signOut } from "next-auth/react"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { Edit2, Trash2, Plus, LogOut, BookOpen, Sparkles } from 'lucide-react';
+import { Edit2, Trash2, Plus, LogOut, BookOpen, Sparkles, Users } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogTrigger,
@@ -15,6 +15,7 @@ import {
   AlertDialogAction,
 } from "@/components/ui/alert-dialog"
 import { toast, Toaster } from "sonner";
+import { Button } from "@/components/ui/button";
 
 export default function MateriPage() {
   const { data: session, status } = useSession()
@@ -203,7 +204,8 @@ export default function MateriPage() {
 
   if (!session) return null
 
-  const isAdmin = session?.user?.role === "admin" || session?.user?.role === "guru"
+  const isGuru = session?.user?.role === "admin" || session?.user?.role === "guru"
+  const isAdmin = session?.user?.role === "admin"
 
   return (
     
@@ -232,12 +234,23 @@ export default function MateriPage() {
         <div className="flex items-center space-x-2 sm:space-x-4">
           {isAdmin && (
             <button
-              onClick={openTambahModal}
+              onClick={() => router.push("/admin/dashboard")}
               className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 sm:px-5 py-2 rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all hover:scale-105 text-sm sm:text-base active:scale-95"
             >
-              <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
-              Tambah
-            </button>
+              <Users className="w-4 h-4 sm:w-5 sm:h-5" />
+              Admin
+            </button> 
+          )}
+          {isGuru && (
+            <>
+              <button
+                onClick={openTambahModal}
+                className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 sm:px-5 py-2 rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all hover:scale-105 text-sm sm:text-base active:scale-95"
+              >
+                <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
+                Tambah
+              </button>
+            </>
           )}
 
           <button
@@ -303,7 +316,7 @@ export default function MateriPage() {
                     Lihat
                   </a>
 
-                  {isAdmin && (
+                  {isGuru && (
                     <div className="flex items-center space-x-2 sm:space-x-3">
                       <button
                         onClick={() => openEditModal(materi)}
