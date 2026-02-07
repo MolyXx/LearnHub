@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "next/navigation"
 import { useSession } from "next-auth/react"
-import { Edit2, Trash2, Bold, Italic, Underline as UnderlineIcon, List, AlignLeft, AlignCenter, AlignRight, AlignJustify, FileText, Plus, X, ExternalLink, Undo2, Redo2, ListOrdered, Pencil, FileImage, FileCode, FileSpreadsheet, FileType, Eye } from "lucide-react"
+import { Edit2, Trash2, Bold, Italic, Underline as UnderlineIcon, List, AlignLeft, AlignCenter, AlignRight, AlignJustify, FileText, Plus, X, ExternalLink, Undo2, Redo2, ListOrdered, Pencil, FileImage, FileCode, FileSpreadsheet, FileType, Eye, Play } from "lucide-react"
 import Link from "next/link"
 import { EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
@@ -35,6 +35,16 @@ export default function SubMateriPage() {
     const [newFileDesc, setNewFileDesc] = useState("") // This will store HTML from editor
     const [isAddingFile, setIsAddingFile] = useState(false)
     const [editingFileId, setEditingFileId] = useState(null)
+    
+    // Video Player State
+    const [selectedVideo, setSelectedVideo] = useState(null)
+
+    const isVideoFile = (path) => {
+        if (!path) return false;
+        const cleanPath = path.split('?')[0];
+        const ext = cleanPath.split('.').pop().toLowerCase();
+        return ['mp4', 'mov', 'avi', 'mkv', 'webm'].includes(ext);
+    }
 
     // Editor for File Description (New)
     const descEditor = useEditor({
@@ -356,12 +366,21 @@ export default function SubMateriPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-900 text-lg">{file.judul}</h3>
-                                        <Link
-                                            href={`/materi/${materiSlug}/${subSlug}/file/${file.id}`}
-                                            className="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1.5 mt-1"
-                                        >
-                                            Lihat File <Eye size={14} />
-                                        </Link>
+                                            {isVideoFile(file.file) ? (
+                                                <button
+                                                    onClick={() => setSelectedVideo(file)}
+                                                    className="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1.5 mt-1"
+                                                >
+                                                    Putar Video <Play size={14} />
+                                                </button>
+                                            ) : (
+                                                <Link
+                                                    href={`/materi/${materiSlug}/${subSlug}/file/${file.id}`}
+                                                    className="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1.5 mt-1"
+                                                >
+                                                    Lihat File <Eye size={14} />
+                                                </Link>
+                                            )}
                                     </div>
                                 </div>
                                 {isAdmin && editMode && (
@@ -530,6 +549,29 @@ export default function SubMateriPage() {
                     </div>
                 )}
                 <ChatWidget materiSlug={materi.slug} subSlug={subSlug} />
+
+                {/* Video Player Modal */}
+                <Dialog open={!!selectedVideo} onOpenChange={(open) => !open && setSelectedVideo(null)}>
+                    <DialogContent className="max-w-4xl bg-black border-gray-800 p-0 overflow-hidden">
+                        <DialogHeader className="p-4 absolute top-0 left-0 w-full z-10 bg-gradient-to-b from-black/80 to-transparent">
+                            <DialogTitle className="text-white flex items-center justify-between">
+                                <span className="truncate">{selectedVideo?.judul}</span>
+                            </DialogTitle>
+                        </DialogHeader>
+                        <div className="aspect-video w-full bg-black flex items-center justify-center">
+                            {selectedVideo && (
+                                <video 
+                                    controls 
+                                    autoPlay 
+                                    className="w-full h-full"
+                                    src={getFileUrl(selectedVideo.file)}
+                                >
+                                    Your browser does not support the video tag.
+                                </video>
+                            )}
+                        </div>
+                    </DialogContent>
+                </Dialog>
             </div>
         </main>
     )
