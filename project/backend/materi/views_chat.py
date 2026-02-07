@@ -85,6 +85,8 @@ def chat_gpt(request):
 
     system_prompt = (
         "Anda adalah asisten."
+        "Setiap akhir jawaban berikan disclaimer bahwa jawaban ada kemungkinan salah, suruh user konsultasi jawaban ke guru."
+        "Kalimat disclaimer dibawah sendiri den menggunkan kalimat tebal"
     )
 
     input_content = [

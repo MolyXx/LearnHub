@@ -203,7 +203,7 @@ export default function MateriPage() {
 
   if (!session) return null
 
-  const isAdmin = session?.user?.role === "admin"
+  const isAdmin = session?.user?.role === "admin" || session?.user?.role === "guru"
 
   return (
     

@@ -201,7 +201,7 @@ export default function SubMateriPage() {
         }
     }, [judul])
 
-    const isAdmin = session?.user?.role === "admin"
+    const isAdmin = session?.user?.role === "admin" || session?.user?.role === "guru"
 
     // Only updates title now, as main content is removed
     const handleSave = async () => {
