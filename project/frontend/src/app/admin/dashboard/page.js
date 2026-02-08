@@ -2,12 +2,15 @@
 import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation"
 import { useState, useEffect } from "react"
-import { UserPlus, Users, Trash2 } from 'lucide-react'
+import { UserPlus, Users, Trash2, Pencil } from 'lucide-react'
+import { toast, Toaster } from "sonner";
 
 export default function AdminDashboard() {
   const { data: session, status } = useSession()
   const [gurus, setGurus] = useState([])
   const [newGuru, setNewGuru] = useState({ username: "", email: "", password: "" })
+  const [editingGuru, setEditingGuru] = useState(null)
+  const [editForm, setEditForm] = useState({ username: "", email: "", password: "" })
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -47,19 +50,64 @@ export default function AdminDashboard() {
         if (res.ok) {
             setNewGuru({ username: "", email: "", password: "" })
             fetchGurus()
-            alert("Guru created successfully")
+            toast.success("Akun guru berhasil dibuat!")
         } else {
             const data = await res.json()
-            alert(data.error || "Failed to create guru")
+            toast.error(data.error || "Gagal membuat akun guru!")
         }
     } catch (error) {
-        alert("Error creating guru")
+        toast.error("Terjadi kesalahan saat membuat akun guru!")
+    }
+  }
+
+  const handleDeleteGuru = async (id) => {
+    if(!confirm("Are you sure you want to delete this guru?")) return
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/accounts/auth/delete-guru/${id}/`, {
+            method: "DELETE"
+        })
+         if (res.ok) {
+            fetchGurus()
+            toast.success("Akun guru berhasil dihapus!")
+        } else {
+             toast.error("Gagal menghapus akun guru!")
+        }
+    } catch (error) {
+        toast.error("Terjadi kesalahan saat menghapus akun guru!")
+    }
+  }
+
+  const handleEditClick = (guru) => {
+    setEditingGuru(guru)
+    setEditForm({ username: guru.username, email: guru.email, password: "" })
+  }
+
+  const handleUpdateGuru = async (e) => {
+    e.preventDefault()
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/accounts/auth/update-guru/${editingGuru.id}/`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(editForm)
+        })
+        if (res.ok) {
+            setEditingGuru(null)
+            fetchGurus()
+            toast.success("Akun guru berhasil diupdate!")
+        } else {
+            const data = await res.json()
+            toast.error(data.error || "Gagal mengupdate akun guru!")
+        }
+    } catch (error) {
+        toast.error("Terjadi kesalahan saat mengupdate akun guru!")
     }
   }
 
   if (status === "loading" || loading) return <div className="p-8">Loading...</div>
 
   return (
+    <>
+    <Toaster position="top-right" richColors />
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
@@ -124,6 +172,7 @@ export default function AdminDashboard() {
                                 <th className="pb-3 font-medium text-gray-500">ID</th>
                                 <th className="pb-3 font-medium text-gray-500">Username</th>
                                 <th className="pb-3 font-medium text-gray-500">Email</th>
+                                <th className="pb-3 font-medium text-gray-500 text-right">Aksi</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100">
@@ -132,6 +181,24 @@ export default function AdminDashboard() {
                                     <td className="py-3 text-gray-500">{guru.id}</td>
                                     <td className="py-3 font-medium text-gray-900">{guru.username}</td>
                                     <td className="py-3 text-gray-600">{guru.email}</td>
+                                    <td className="py-3 text-right">
+                                        <div className="flex justify-end gap-2">
+                                            <button 
+                                                onClick={() => handleEditClick(guru)}
+                                                className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                                                title="Edit Guru"
+                                            >
+                                                <Pencil className="w-4 h-4" />
+                                            </button>
+                                            <button 
+                                                onClick={() => handleDeleteGuru(guru.id)}
+                                                className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                                title="Hapus Guru"
+                                            >
+                                                <Trash2 className="w-4 h-4" />
+                                            </button>
+                                        </div>
+                                    </td>
                                 </tr>
                             ))}
                             {gurus.length === 0 && (
@@ -147,6 +214,63 @@ export default function AdminDashboard() {
             </div>
         </div>
       </div>
+
+      {/* Edit Guru Modal */}
+      {editingGuru && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-xl">
+                <h2 className="text-xl font-semibold mb-4">Edit Guru</h2>
+                <form onSubmit={handleUpdateGuru} className="space-y-4">
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                        <input
+                            type="text"
+                            required
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                            value={editForm.username}
+                            onChange={(e) => setEditForm({...editForm, username: e.target.value})}
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input
+                            type="email"
+                            required
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                            value={editForm.email}
+                            onChange={(e) => setEditForm({...editForm, email: e.target.value})}
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Password (Kosongkan jika tidak ingin mengubah)</label>
+                        <input
+                            type="password"
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                            value={editForm.password}
+                            onChange={(e) => setEditForm({...editForm, password: e.target.value})}
+                            placeholder="Password baru..."
+                        />
+                    </div>
+                    <div className="flex gap-3 mt-6">
+                        <button
+                            type="button"
+                            onClick={() => setEditingGuru(null)}
+                            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium"
+                        >
+                            Batal
+                        </button>
+                        <button
+                            type="submit"
+                            className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium"
+                        >
+                            Simpan Perubahan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+      )}
     </div>
+    </>
   )
 }

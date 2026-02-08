@@ -58,6 +58,33 @@ def list_gurus(request):
     data = [{"id": u.id, "username": u.username, "email": u.email} for u in gurus]
     return Response(data)
 
+@api_view(["PUT"])
+def update_guru(request, pk):
+    try:
+        user = User.objects.get(pk=pk, role="guru")
+    except User.DoesNotExist:
+        return Response({"error": "Guru not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    data = request.data
+    user.username = data.get("username", user.username)
+    user.email = data.get("email", user.email)
+    
+    if "password" in data and data["password"]:
+        user.set_password(data["password"])
+    
+    user.save()
+    return Response({"message": "Guru updated successfully"})
+
+@api_view(["DELETE"])
+def delete_guru(request, pk):
+    try:
+        user = User.objects.get(pk=pk, role="guru")
+    except User.DoesNotExist:
+        return Response({"error": "Guru not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    user.delete()
+    return Response({"message": "Guru deleted successfully"})
+
 @api_view(["POST"])
 def logout_view(request):
     return Response({"message": "Logout successful"}, status=status.HTTP_200_OK)
